@@ -1,8 +1,12 @@
-﻿namespace Controversie.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Controversie.Models
 {
     public class Violazione
     {
+        [Key]
         public int IdViolazione { get; set; }
+
         public string Descrizione { get; set; }
 
         public bool Contestabile { get; set; }

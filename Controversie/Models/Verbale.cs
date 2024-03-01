@@ -10,20 +10,24 @@ namespace Controversie.Models
         [Key]
         public int IdVerbale { get; set; }
 
-        [Display(Name = "Data Violazione")]
+        [Display(Name = "Data della Violazione")]
         [DataType(DataType.Date)]
+        [Required(ErrorMessage = "La data violazione è obbligatoria.")]
         public DateTime DataViolazione { get; set; }
 
         [Display(Name = "Indirizzo Violazione")]
         [StringLength(255)]
+        [Required(ErrorMessage = "L'indirizzo è obbligatorio.")]
         public string IndirizzoViolazione { get; set; }
 
         [Display(Name = "Nominativo Agente")]
         [StringLength(50)]
+        [Required(ErrorMessage = "Il nominativo agente è obbligatorio.")]
         public string NominativoAgente { get; set; }
 
-        [Display(Name = "Data Trascrizione")]
+        [Display(Name = "Data della Trascrizione")]
         [DataType(DataType.Date)]
+        [Required(ErrorMessage = "La data tarscrizione è obbligatoria.")]
         public DateTime DataTrascrizione { get; set; }
 
         [Required(ErrorMessage = "Il prezzo dell'articolo è obbligatorio.")]
@@ -33,10 +37,13 @@ namespace Controversie.Models
         public decimal Importo { get; set; }
 
         [Display(Name = "Decurtamento Punti")]
+        [Required(ErrorMessage = "Il decurtamento punti è obbligatorio.")]
         public int DecurtamentoPunti { get; set; }
 
         [Display(Name = "Anagrafica")]
+        [Key]
         public int Fk_IdAnagrafica { get; set; }
+        [Key]
 
         [Display(Name = "Tipo Violazione")]
         public int Fk_IdViolazione { get; set; }
