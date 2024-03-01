@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-4 col-xl-3">
+            <a href="@Url.Action("Index", "Anagrafica")">
+                <div class="card h-100">
+                    <img src="~/Content/Assets/img/anagrafica.png" class="card-img-top home mx-auto d-block m-2" alt="Anagrafe">
+                    <div class="card-body">
+                        <h5 class="card-title">Anagrafe</h5>
+                        <p class="card-text">Gestisci anagrafiche.</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-lg-4 col-xl-3">
+            <a href="@Url.Action("Index", "Verbale")">
+                <div class="card h-100">
+                    <img src="~/Content/Assets/img/verbale.png" class="card-img-top home mx-auto d-block m-2" alt="Verbale">
+                    <div class="card-body">
+                        <h5 class="card-title">Verbale</h5>
+                        <p class="card-text">Gestisci verbali.</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-lg-4 col-xl-3">
+            <a href="@Url.Action("Index", "Violazione")">
+                <div class="card h-100">
+                    <img src="~/Content/Assets/img/violazione.png" class="card-img-top home mx-auto d-block m-2" alt="Violazioni">
+                    <div class="card-body">
+                        <h5 class="card-title">Violazioni</h5>
+                        <p class="card-text">Consulta le violazioni.</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-lg-4 col-xl-3">
+            <a href="@Url.Action("Index", "Report")">
+                <div class="card h-100">
+                    <img src="~/Content/Assets/img/report.png" class="card-img-top home mx-auto d-block m-2" alt="Report">
+                    <div class="card-body">
+                        <h5 class="card-title">Report</h5>
+                        <p class="card-text">Visualizza report e statistiche.</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</main>

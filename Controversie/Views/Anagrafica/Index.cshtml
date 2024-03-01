@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Controversie.Models.Anagrafica>
+
+@{
+    ViewBag.Title = "Lista Anagrafica";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">
+        @ViewBag.Message
+    </div>
+}
+
+<h2>Lista Anagrafica</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Cognome)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Indirizzo)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Citta)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.CAP)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Cod_Fisc)
+            </th>
+            <th class="text-center">
+                    @Html.ActionLink("Aggiungi Anagrafica", "Create", null, new { @class = "btn btn-outline-success" })
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Cognome)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td  scope="row">
+                    @Html.DisplayFor(modelItem => item.Indirizzo)
+                </td>
+                <td  scope="row">
+                    @Html.DisplayFor(modelItem => item.Citta)
+                </td>
+                <td  scope="row">
+                    @Html.DisplayFor(modelItem => item.CAP)
+                </td>
+                <td  scope="row">
+                    @Html.DisplayFor(modelItem => item.Cod_Fisc)
+                </td>
+                <td>
+                    <div class="d-flex align-items-center justify-content-evenly gap-2">
+                        <div class="btn-group" role="group" aria-label="Btn Anagrafica">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdAnagrafica }, new { @class = "btn btn-sm btn-outline-dark" })
+                            @*@Html.ActionLink("Details", "Details", new { id = item.IdAnagrafica }, new { @class = "btn btn-sm btn-outline-secondary" })*@
+                        </div>
+
+                        @using (Html.BeginForm("Delete", "Anagrafica", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@item.IdAnagrafica" />
+                            <button type="submit" onclick="return confirm('Sei sicuro di voler eliminare questo elemento?');" class="btn btn-sm btn-outline-danger">
+                                Delete
+                            </button>
+                        }
+                    </div>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

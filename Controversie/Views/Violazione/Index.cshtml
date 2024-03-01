@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Controversie.Models.Violazione>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @Html.Raw(TempData["SuccessMessage"].ToString())
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @Html.Raw(TempData["ErrorMessage"].ToString())
+    </div>
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID Violazione</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Contestabile</th>
+            <th scope="col">Punti Decurtati</th>
+            <th scope="col" class="text-center">Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.IdViolazione)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Descrizione)
+                </td>
+                <td scope="row">
+                    @(item.Contestabile ? "Sì" : "No")
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.PuntiDecurtati) <!-- Valore dei punti decurtati visualizzato qui -->
+                </td>
+                <td scope="row">
+                    <div class="d-flex align-items-center justify-content-evenly gap-2">
+                        @using (Html.BeginForm("ToggleContestabile", "Violazione", new { id = item.IdViolazione }, FormMethod.Post, new { @class = "inline-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@item.IdViolazione" />
+                            <input type="submit" value="@(item.Contestabile ? "Togli Contestabilità" : "Rendi Contestabile")" class="btn @(item.Contestabile ? "btn-warning fs-6" : "btn-success") my-1" />
+                        }
+
+                        <div class="btn-group">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdViolazione }, new { @class = "btn btn-outline-dark" })
+                            @Html.ActionLink("Details", "Details", new { id = item.IdViolazione }, new { @class = "btn btn-outline-secondary" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IdViolazione }, new { @class = "btn btn-outline-danger" })
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

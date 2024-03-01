@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Controversie.Models.ViolazioneReport>
+
+@{
+    ViewBag.Title = "ViolazioniImportoMaggiore400";
+}
+
+<h2>Violazioni importo maggiore 400</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataViolazione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Importo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DecurtamentoPunti)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cognome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataViolazione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Importo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DecurtamentoPunti)
+            </td>
+
+        </tr>
+    }
+</table>
+
+<a class="nav-link" href="@Url.Action("Index", "Report")">Indietro</a>
+

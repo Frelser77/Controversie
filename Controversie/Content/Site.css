@@ -1,0 +1,92 @@
+﻿/* Set padding to keep content from hitting the edges */
+body {
+    background-color: #e9ecefe3;
+}
+
+:where(:hover, :focus) {
+    text-decoration: none;
+}
+
+:where(th, th a, th a:visited, th a:link, th a:active) {
+    font-weight: 600;
+}
+
+:where(td, td a, td a:visited, td a:link, td a:active) {
+    font-weight: 400;
+}
+
+.btn-outline-secondary{
+    color: #434343;
+}
+
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* TABELLE */
+table,
+td,
+th {
+    border: 1px solid black;
+    border-collapse: collapse
+}
+
+    td:nth-child(5), th:nth-child(5) {
+        width: 150px; /* Specifica la larghezza desiderata */
+    }
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+    tr:nth-child(even):hover,
+    tr:nth-child(odd):hover {
+        background-color: #ccc; 
+    }
+/* TABELLE */
+
+/* DROPDOWN */
+.dropdown-menu[data-bs-popper] {
+    top: 120%;
+    left: -41px;
+    margin-top: var(--bs-dropdown-spacer);
+    background-color: #212529;
+}
+
+.dropdown-item {
+    color: #fff;
+}
+    /* DROPDOWN */
+
+/* IMMAGINI HOME */
+
+img.home{
+    width: 150px;
+    height: 150px;
+}
+
+.row a {
+    text-decoration:none;
+    color: #000;
+    text-align: center;
+}

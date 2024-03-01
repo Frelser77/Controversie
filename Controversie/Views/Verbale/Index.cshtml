@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Controversie.Models.Verbale>
+
+
+@{
+    ViewBag.Title = "Lista verbali";
+}
+
+<h2>Lista Verbali</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @Html.Raw(TempData["SuccessMessage"].ToString())
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @Html.Raw(TempData["ErrorMessage"].ToString())
+    </div>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.DataViolazione)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.IndirizzoViolazione)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.NominativoAgente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataTrascrizione)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Importo)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.DecurtamentoPunti)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Fk_IdAnagrafica)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Fk_IdViolazione)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Pagata)
+            </th>
+            <th scope="col" class="text-center">
+                @Html.ActionLink("Crea un nuovo verbale", "Create", null, new { @class = "btn btn-outline-success btn-sm my-2 d-block" })
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.DataViolazione)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.IndirizzoViolazione)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.NominativoAgente)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.DataTrascrizione)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Importo)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.DecurtamentoPunti)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Fk_IdAnagrafica)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Fk_IdViolazione)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Pagata)
+                </td>
+                <td scope="row">
+                    <div class="d-flex align-items-center justify-content-around gap-2">
+                        <div class="btn-group">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdVerbale }, new { @class = "btn btn-sm btn-outline-dark" })
+                            @*@Html.ActionLink("Details", "Details", new { id = item.IdVerbale }) *@
+                            <a href="@Url.Action("Delete", "Violazione", new { id = item.IdVerbale })"
+                               onclick="return confirm('Sei sicuro di voler eliminare questo elemento?');"
+                               class="btn btn-sm btn-outline-secondary">
+                                Delete
+                            </a>
+                        </div>
+                        @using (Html.BeginForm("AsPaid", "Verbale", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@item.IdVerbale" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                @* onclick="return confirm('Sei sicuro di voler eliminare questo elemento?');"*@
+                                Pagato
+                            </button>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
