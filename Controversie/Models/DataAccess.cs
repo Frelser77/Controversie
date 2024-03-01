@@ -10,6 +10,7 @@ namespace Controversie.Models
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["ComuneDiOria"].ConnectionString;
 
+        // ###################### DATI ANAGRAFICA ######################
         public List<Anagrafica> GetAnagrafica()
         {
             List<Anagrafica> list = new List<Anagrafica>();
@@ -49,8 +50,6 @@ namespace Controversie.Models
             return list;
         }
 
-
-        // CREATE
         public void AddAnagrafica(Anagrafica anagrafica)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -71,7 +70,6 @@ namespace Controversie.Models
             }
         }
 
-        // UPDATE
         public void UpdateAnagrafica(Anagrafica anagrafica)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -92,7 +90,6 @@ namespace Controversie.Models
             }
         }
 
-        // DELETE
         public void DeleteAnagrafica(int idAnagrafica)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -141,7 +138,6 @@ namespace Controversie.Models
 
             return list;
         }
-
 
         public Verbale GetVerbaleById(int idVerbale)
         {
@@ -251,7 +247,7 @@ namespace Controversie.Models
             }
         }
 
-        // METODI PER LE VIOLAZIONI
+        // ###################### METODI PER LE VIOLAZIONI 
 
         public IEnumerable<Violazione> GetViolazioniContestabili()
         {
@@ -371,7 +367,6 @@ namespace Controversie.Models
         }
 
 
-
         public void DeleteViolazione(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -402,7 +397,7 @@ namespace Controversie.Models
             }
         }
 
-        // METODI PER CONTROLLO DATI
+        // ###################### METODI PER CONTROLLO DATI ######################
 
         public List<TrasgressoreReport> GetTotaleVerbaliPerTrasgressore()
         {

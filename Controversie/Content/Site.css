@@ -80,9 +80,11 @@ tr:nth-child(odd) {
 
 /* IMMAGINI HOME */
 
-img.home{
+img.home {
+    margin-left: 4rem;
     width: 150px;
     height: 150px;
+    margin-right: 1.5rem;
 }
 
 .row a {

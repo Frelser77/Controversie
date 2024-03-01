@@ -78,8 +78,6 @@ namespace Controversie.Controllers
             return View(verbale);
         }
 
-
-
         [HttpGet]
         public ActionResult Edit(int id)
         {
